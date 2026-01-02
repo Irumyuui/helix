@@ -1636,6 +1636,7 @@ dependencies = [
  "serde",
  "serde_json",
  "slotmap",
+ "smartstring",
  "tempfile",
  "termina",
  "thiserror",
@@ -2646,6 +2647,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3fb72c633efbaa2dd666986505016c32c3044395ceaf881518399d2f4127ee29"
 dependencies = [
  "autocfg",
+ "serde",
  "static_assertions",
  "version_check",
 ]
