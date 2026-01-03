@@ -5,6 +5,9 @@ use helix_term::args::Args;
 use helix_term::config::{Config, ConfigLoadError};
 use indexmap::map::MutableKeys;
 
+#[global_allocator]
+static GLOBAL: mimalloc::MiMalloc = mimalloc::MiMalloc;
+
 fn setup_logging(verbosity: u64) -> Result<()> {
     let mut base_config = fern::Dispatch::new();
 

@@ -98,6 +98,8 @@ steel-doc = { git = "https://github.com/mattwparas/steel.git", version = "0.8.2"
 globset = "0.4.16"
 dashmap = "6.0"
 
+mimalloc = { workspace = true }
+
 [target.'cfg(windows)'.dependencies]
 crossterm = { version = "0.28", features = ["event-stream"] }
 
