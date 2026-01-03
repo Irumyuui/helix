@@ -264,8 +264,8 @@ fn increment_generation() {
     GENERATION.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
 }
 
-fn is_current_generation(gen: usize) -> bool {
-    GENERATION.load(std::sync::atomic::Ordering::SeqCst) == gen
+fn is_current_generation(r#gen: usize) -> bool {
+    GENERATION.load(std::sync::atomic::Ordering::SeqCst) == r#gen
 }
 
 fn load_generation() -> usize {
