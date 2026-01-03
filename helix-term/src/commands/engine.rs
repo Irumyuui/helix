@@ -68,7 +68,7 @@ pub struct TerminalEventReaderHandle;
 
 #[cfg(any(windows, feature = "integration"))]
 impl TerminalEventReaderHandle {
-    pub fn new(terminal: &TerminalBackend) -> Self {
+    pub fn new(_terminal: &TerminalBackend) -> Self {
         Self
     }
 }
@@ -109,19 +109,13 @@ impl ScriptingEngine {
         event_reader: TerminalEventReaderHandle,
     ) {
         // Set up a flag to disable steel, even on the current build?
-        if configuration.load().editor.enable_steel {
-            PLUGIN_PRECEDENCE
-                .set(vec![
-                    #[cfg(feature = "steel")]
-                    PluginSystemTypes::Steel(steel::SteelScriptingEngine),
-                    PluginSystemTypes::None(NoEngine),
-                ])
-                .ok();
-        } else {
-            PLUGIN_PRECEDENCE
-                .set(vec![PluginSystemTypes::None(NoEngine)])
-                .ok();
-        }
+        PLUGIN_PRECEDENCE
+            .set(vec![
+                #[cfg(feature = "steel")]
+                PluginSystemTypes::Steel(steel::SteelScriptingEngine),
+                PluginSystemTypes::None(NoEngine),
+            ])
+            .ok();
 
         for kind in plugins() {
             manual_dispatch!(
