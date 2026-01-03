@@ -819,12 +819,14 @@ impl std::str::FromStr for GutterType {
 #[serde(default)]
 pub struct WhitespaceConfig {
     pub render: WhitespaceRender,
+    pub characters: WhitespaceCharacters,
 }
 
 impl Default for WhitespaceConfig {
     fn default() -> Self {
         Self {
             render: WhitespaceRender::Basic(WhitespaceRenderValue::None),
+            characters: WhitespaceCharacters::default(),
         }
     }
 }
@@ -2426,5 +2428,29 @@ impl CursorCache {
 
     pub fn reset(&self) {
         self.0.set(None)
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(default)]
+pub struct WhitespaceCharacters {
+    pub space: char,
+    pub nbsp: char,
+    pub nnbsp: char,
+    pub tab: char,
+    pub tabpad: char,
+    pub newline: char,
+}
+
+impl Default for WhitespaceCharacters {
+    fn default() -> Self {
+        Self {
+            space: '·',   // U+00B7
+            nbsp: '⍽',    // U+237D
+            nnbsp: '␣',   // U+2423
+            tab: '→',     // U+2192
+            newline: '⏎', // U+23CE
+            tabpad: ' ',
+        }
     }
 }
