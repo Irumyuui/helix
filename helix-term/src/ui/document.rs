@@ -209,7 +209,7 @@ impl<'a> TextRenderer<'a> {
     ) -> TextRenderer<'a> {
         let editor_config = doc.config.load();
 
-        let WhitespaceConfig { render } = &editor_config.whitespace;
+        let render = &editor_config.whitespace.render;
 
         let tab_width = doc.tab_width();
 

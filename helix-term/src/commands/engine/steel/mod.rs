@@ -103,6 +103,7 @@ static EVENT_READER: OnceCell<EventReader> = OnceCell::new();
 static CTX: &str = "*helix.cx*";
 static CONFIG: &str = "*helix.config*";
 
+#[allow(unused)]
 fn install_event_reader(event_reader: TerminalEventReaderHandle) {
     #[cfg(feature = "integration")]
     {}
@@ -2845,9 +2846,9 @@ impl HelixConfiguration {
             app_config.editor.statusline.right = steel_list_to_elements(right)?;
         }
 
-        if let Some(separator) = config.get("separator") {
-            app_config.editor.statusline.separator = String::from_steelval(separator)?;
-        }
+        // if let Some(separator) = config.get("separator") {
+        //     app_config.editor.statusline.separator = String::from_steelval(separator)?;
+        // }
 
         if let Some(normal_mode) = config.get("mode-normal") {
             if let SteelVal::StringV(s) = normal_mode {
