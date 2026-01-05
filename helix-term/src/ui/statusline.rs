@@ -1,5 +1,5 @@
 use helix_core::indent::IndentStyle;
-use helix_core::{coords_at_pos, encoding, unicode::width::UnicodeWidthStr, Position};
+use helix_core::{coords_at_pos, unicode::width::UnicodeWidthStr, Position};
 use helix_lsp::lsp::DiagnosticSeverity;
 use helix_view::document::DEFAULT_LANGUAGE_NAME;
 use helix_view::icons::ICONS;
@@ -449,10 +449,7 @@ where
     F: Fn(&mut RenderContext<'a>, Span<'a>) + Copy,
 {
     let enc = context.doc.encoding();
-
-    if enc != encoding::UTF_8 {
-        write(context, format!(" {} ", enc.name()).into());
-    }
+    write(context, format!(" {} ", enc.name()).into());
 }
 
 fn render_file_line_ending<'a, F>(context: &mut RenderContext<'a>, write: F)
