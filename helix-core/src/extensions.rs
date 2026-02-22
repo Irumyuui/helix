@@ -731,11 +731,6 @@ pub mod steel_implementations {
             Ok(self.to_slice().try_byte_to_char(pos)?)
         }
 
-        #[allow(clippy::inherent_to_string)]
-        pub fn to_string(&self) -> String {
-            self.to_slice().to_string()
-        }
-
         pub fn len_chars(&self) -> usize {
             self.to_slice().len_chars()
         }
