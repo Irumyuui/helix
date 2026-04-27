@@ -14,12 +14,12 @@ pub fn init(config: &Config) {
         other => other,
     };
 
-    eprintln!("[i18n] setting locale to '{}'", normalized);
+    // eprintln!("[i18n] setting locale to '{}'", normalized);
     rust_i18n::set_locale(normalized);
-    eprintln!(
-        "[i18n] current locale is now: {:?}",
-        rust_i18n::locale().deref()
-    );
+    // eprintln!(
+    //     "[i18n] current locale is now: {:?}",
+    //     rust_i18n::locale().deref()
+    // );
 }
 
 /// Translate a static string key to the current locale.
